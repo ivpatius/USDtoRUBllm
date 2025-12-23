@@ -1,0 +1,18 @@
+# файл: prices.txt
+# в каждой строке цены квартир на одном этаже, разделены табуляцией
+
+filename = "prices.txt"
+
+max_prices = []
+
+with open(filename, "r", encoding="utf-8") as f:
+    for line in f:
+        line = line.strip()
+        if line == "":
+            continue  # пропускаем пустые строки
+
+        parts = line.split("\t")          # разделяем по табуляции
+        nums = list(map(int, parts))      # превращаем в числа (если цены целые)
+        max_prices.append(max(nums))      # добавляем самую дорогую на этаже
+
+print(max_prices)
